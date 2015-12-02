@@ -3,7 +3,7 @@ package br.com.igrejadapaz.fortaleza.np2mapas;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,10 +16,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-public class MapaCafeteriaAtividade extends FragmentActivity implements OnMapReadyCallback {
+import br.com.igrejadapaz.fortaleza.np2mapas.entidade.CafeteriasBean;
+
+public class MapaCafeteriaAtividade extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private CafeteriaBean cafeteriaSelecionada;
+    private CafeteriasBean cafeteriaSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,8 @@ public class MapaCafeteriaAtividade extends FragmentActivity implements OnMapRea
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        cafeteriaSelecionada = getIntent().getExtras().getParcelable("cafeteriaSelecionada");
+         cafeteriaSelecionada = getIntent().getExtras().getParcelable("cs");
+
 
         TextView nome = (TextView) findViewById(R.id.textViewNome);
         nome.setText(cafeteriaSelecionada.getNome());
@@ -39,7 +42,7 @@ public class MapaCafeteriaAtividade extends FragmentActivity implements OnMapRea
         TextView telefone = (TextView) findViewById(R.id.textViewTelefone);
         telefone.setText(cafeteriaSelecionada.getTelefone());
         TextView preco = (TextView) findViewById(R.id.textViewPreco);
-        preco.setText(cafeteriaSelecionada.getPreco());
+        preco.setText("Preço médio: "+cafeteriaSelecionada.getPreco());
 
     }
 
@@ -56,9 +59,15 @@ public class MapaCafeteriaAtividade extends FragmentActivity implements OnMapRea
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+//        mMap.setMapType(4);
+        mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
+        mMap.setContentDescription("Mapas das Cafeterias");
+
 
         mMap.addMarker(new MarkerOptions().position(getLatLngFromAddress(cafeteriaSelecionada.getEndereco())).title(cafeteriaSelecionada.getNome()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(getLatLngFromAddress(cafeteriaSelecionada.getEndereco())));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLatLngFromAddress(cafeteriaSelecionada.getEndereco()), 20));
     }
 
     public LatLng getLatLngFromAddress(String endereco) {

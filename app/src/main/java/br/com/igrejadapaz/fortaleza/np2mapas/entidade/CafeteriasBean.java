@@ -1,12 +1,12 @@
-package br.com.igrejadapaz.fortaleza.np2mapas;
+package br.com.igrejadapaz.fortaleza.np2mapas.entidade;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Samuel Santiago on 29/11/2015.
+ * Created by Samuel Santiago on 01/12/2015.
  */
-public class CafeteriaBean implements Parcelable {
+public class CafeteriasBean implements Parcelable {
 
     private int id;
     private String nome;
@@ -14,11 +14,19 @@ public class CafeteriaBean implements Parcelable {
     private String telefone;
     private String preco;
 
-
-    public CafeteriaBean(Parcel in) {
+    public CafeteriasBean(){
+        // TODO
     }
 
-    public CafeteriaBean(String nome, String endereco, String telefone, String preco) {
+    public CafeteriasBean(int id, String nome, String endereco, String telefone, String preco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.preco = preco;
+    }
+
+    public CafeteriasBean(String nome, String endereco, String telefone, String preco) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -26,44 +34,8 @@ public class CafeteriaBean implements Parcelable {
     }
 
 
-    @SuppressWarnings("rawtypes")
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public CafeteriaBean createFromParcel(Parcel in) {
-            return new CafeteriaBean(in);
-        }
-
-        public CafeteriaBean[] newArray(int size) {
-            return new CafeteriaBean[size];
-        }
-    };
-
-    /**
-     * Describe the kinds of special objects contained in this Parcelable's
-     * marshalled representation.
-     *
-     * @return a bitmask indicating the set of special object types marshalled
-     * by the Parcelable.
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    /**
-     * Flatten this object in to a Parcel.
-     *
-     * @param dest  The Parcel in which the object should be written.
-     * @param flags Additional flags about how the object should be written.
-     *              May be 0 or {@link #PARCELABLE_WRITE_RETURN_VALUE}.
-     */
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(nome);
-        dest.writeString(endereco);
-        dest.writeString(telefone);
-        dest.writeString(preco);
-
+    public CafeteriasBean(Parcel in) {
+        readFromParcelable(in);
     }
 
     private void readFromParcelable(Parcel in) {
@@ -74,8 +46,42 @@ public class CafeteriaBean implements Parcelable {
         preco = in.readString();
     }
 
+    @SuppressWarnings("rawtypes")
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public CafeteriasBean createFromParcel(Parcel in) {
+            return new CafeteriasBean(in);
+        }
+
+        public CafeteriasBean[] newArray(int size) {
+            return new CafeteriasBean[size];
+        }
+    };
+
     public String toString(){
         return nome;
+    }
+
+    @Override
+    public int describeContents() {
+        //não vai usar
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nome);
+        dest.writeString(endereco);
+        dest.writeString(telefone);
+        dest.writeString(preco);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -110,12 +116,7 @@ public class CafeteriaBean implements Parcelable {
         this.preco = preco;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public static Parcelable.Creator getCREATOR() {
+        return CREATOR;
     }
 }
-

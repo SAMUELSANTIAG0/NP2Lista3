@@ -12,12 +12,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.igrejadapaz.fortaleza.np2mapas.entidade.CafeteriasBean;
+
 public class ListaCafeteriaAtividade extends AppCompatActivity {
 
     private ListView listViewCafeteriaBean;
-    private CafeteriaBean cafeteriaSelecionada;
-    private List<CafeteriaBean> registrosCafeteriaBean = null;
-    private ArrayAdapter<CafeteriaBean> adaptadorLista;
+    private CafeteriasBean cafeteriaSelecionada;
+    private List<CafeteriasBean> registrosCafeteriaBean = null;
+    private ArrayAdapter<CafeteriasBean> adaptadorLista;
     private int adptadorLayout = android.R.layout.simple_list_item_1;
 
     @Override
@@ -27,27 +29,29 @@ public class ListaCafeteriaAtividade extends AppCompatActivity {
 
         listViewCafeteriaBean = (ListView) findViewById(R.id.listView);
         registrosCafeteriaBean = listaCafeterias();
-        adaptadorLista = new ArrayAdapter<CafeteriaBean>(this, adptadorLayout, registrosCafeteriaBean);
+        adaptadorLista = new ArrayAdapter<CafeteriasBean>(this, adptadorLayout, registrosCafeteriaBean);
         listViewCafeteriaBean.setAdapter(adaptadorLista);
         registerForContextMenu(listViewCafeteriaBean);
 
         listViewCafeteriaBean.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                cafeteriaSelecionada = (CafeteriaBean) adaptadorLista.getItem(position);
+                cafeteriaSelecionada = (CafeteriasBean) adaptadorLista.getItem(position);
+
+
                 Intent intent = new Intent(ListaCafeteriaAtividade.this, MapaCafeteriaAtividade.class);
-                intent.putExtra("cafeteriaSelecionada", (Parcelable) cafeteriaSelecionada);
+                intent.putExtra("cs", (Parcelable) cafeteriaSelecionada);
                 startActivity(intent);
             }
         });
 
     }
 
-    private List<CafeteriaBean> listaCafeterias() {
-        ArrayList<CafeteriaBean> lista = new ArrayList<CafeteriaBean>();
-        lista.add(new CafeteriaBean("Cafeteria Santa Clara", "R. José Avelino, 293 - Centro,Fortaleza - CE,60060-360", "(85) 3219-1257", "1,99"));
-        lista.add(new CafeteriaBean("Villa Torri Cafeteria", "Rua Deputado João Pontes, 846 - Fatima,Fortaleza - CE,60040-430", "(85) 3017-1854", "2,99"));
-        lista.add(new CafeteriaBean("Vinyle Café", "Rua Waldery Uchôa, 42 - Benfica,Fortaleza - CE,60040-531", "(85) 3055-3397", "3,99"));
+    private List<CafeteriasBean> listaCafeterias() {
+        ArrayList<CafeteriasBean> lista = new ArrayList<CafeteriasBean>();
+        lista.add(new CafeteriasBean(1,"Cafeteria Santa Clara", "R. José Avelino, 293 - Centro", "(85) 3219-1257", "1,99"));
+        lista.add(new CafeteriasBean(2,"Villa Torri Cafeteria", "Rua Deputado João Pontes, 846 - Fatima", "(85) 3017-1854", "2,99"));
+        lista.add(new CafeteriasBean(3,"Vinyle Café", "Rua Waldery Uchôa, 42 - Benfica", "(85) 3055-3397", "3,99"));
         return lista;
     }
 }

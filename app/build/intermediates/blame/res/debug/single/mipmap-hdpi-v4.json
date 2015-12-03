@@ -2,5 +2,17 @@
     {
         "merged": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\cafe2.jpg",
+        "source": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\src\\main\\res\\mipmap-hdpi\\cafe2.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\cafe4.png",
+        "source": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\src\\main\\res\\mipmap-hdpi\\cafe4.png"
+    },
+    {
+        "merged": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\cafe3.png",
+        "source": "C:\\Users\\Samuel Santiago\\workspace\\NP2Mapas\\app\\src\\main\\res\\mipmap-hdpi\\cafe3.png"
     }
 ]

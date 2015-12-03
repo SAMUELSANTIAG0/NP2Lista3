@@ -7,12 +7,69 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.igrejadapaz.fortaleza.np2mapas.ListaCafeteriaAtividade">
+    tools:context="br.com.igrejadapaz.fortaleza.np2mapas.ListaCafeteriaAtividade"
+    android:background="#d39949">
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/listView"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/radioGroup"
         android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A-Z"
+            android:id="@+id/radioButton"
+            android:checked="true"
+            android:onClick="az" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z-A"
+            android:id="@+id/radioButton2"
+            android:checked="false"
+            android:onClick="za" />
+    </RadioGroup>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/cafe2"
+        android:layout_marginTop="01dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/listView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Meu CaféApp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/radioGroup"
+        android:layout_marginTop="29dp"
+        android:textColor="#67351a" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="By Samuel Santiago"
+        android:id="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/radioGroup"
+        android:textColor="#67351a" />
+
 </RelativeLayout>

@@ -21,14 +21,17 @@ public class ListaCafeteriaAtividade extends AppCompatActivity {
     private List<CafeteriasBean> registrosCafeteriaBean = null;
     private ArrayAdapter<CafeteriasBean> adaptadorLista;
     private int adptadorLayout = android.R.layout.simple_list_item_1;
+    private boolean az = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cafeteria_atividade);
+        android.support.v7.app.ActionBar bar = getSupportActionBar();
+        bar.hide();
 
         listViewCafeteriaBean = (ListView) findViewById(R.id.listView);
-        registrosCafeteriaBean = listaCafeterias();
+        registrosCafeteriaBean = listaCafeterias(az);
         adaptadorLista = new ArrayAdapter<CafeteriasBean>(this, adptadorLayout, registrosCafeteriaBean);
         listViewCafeteriaBean.setAdapter(adaptadorLista);
         registerForContextMenu(listViewCafeteriaBean);
@@ -47,11 +50,38 @@ public class ListaCafeteriaAtividade extends AppCompatActivity {
 
     }
 
-    private List<CafeteriasBean> listaCafeterias() {
+    public void az(View v){
+        this.az = true;
+        registrosCafeteriaBean = listaCafeterias(az);
+        adaptadorLista.clear();
+        adaptadorLista = new ArrayAdapter<CafeteriasBean>(this, adptadorLayout, registrosCafeteriaBean);
+        adaptadorLista.notifyDataSetChanged();
+        listViewCafeteriaBean.setAdapter(adaptadorLista);
+    }
+
+    public void za(View v){
+        this.az = false;
+        adaptadorLista.notifyDataSetChanged();
+        registrosCafeteriaBean = listaCafeterias(az);
+        adaptadorLista.clear();
+        adaptadorLista = new ArrayAdapter<CafeteriasBean>(this, adptadorLayout, registrosCafeteriaBean);
+        adaptadorLista.notifyDataSetChanged();
+        listViewCafeteriaBean.setAdapter(adaptadorLista);
+    }
+
+    private List<CafeteriasBean> listaCafeterias(boolean az) {
         ArrayList<CafeteriasBean> lista = new ArrayList<CafeteriasBean>();
-        lista.add(new CafeteriasBean(1,"Cafeteria Santa Clara", "R. José Avelino, 293 - Centro", "(85) 3219-1257", "1,99"));
-        lista.add(new CafeteriasBean(2,"Villa Torri Cafeteria", "Rua Deputado João Pontes, 846 - Fatima", "(85) 3017-1854", "2,99"));
-        lista.add(new CafeteriasBean(3,"Vinyle Café", "Rua Waldery Uchôa, 42 - Benfica", "(85) 3055-3397", "3,99"));
+
+        if (az) {
+            lista.add(new CafeteriasBean(1, "Cafeteria Santa Clara", "R. José Avelino, 293 - Centro", "(85) 3219-1257", "1,99"));
+            lista.add(new CafeteriasBean(2, "Villa Torri Cafeteria", "Rua Deputado João Pontes, 846 - Fatima", "(85) 3017-1854", "2,99"));
+            lista.add(new CafeteriasBean(3, "Vinyle Café", "Rua Waldery Uchôa, 42 - Benfica", "(85) 3055-3397", "3,99"));
+        }else {
+            lista.add(new CafeteriasBean(3, "Vinyle Café", "Rua Waldery Uchôa, 42 - Benfica", "(85) 3055-3397", "3,99"));
+            lista.add(new CafeteriasBean(2, "Villa Torri Cafeteria", "Rua Deputado João Pontes, 846 - Fatima", "(85) 3017-1854", "2,99"));
+            lista.add(new CafeteriasBean(1, "Cafeteria Santa Clara", "R. José Avelino, 293 - Centro", "(85) 3219-1257", "1,99"));
+        }
+
         return lista;
     }
 }

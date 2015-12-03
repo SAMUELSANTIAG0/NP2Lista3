@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="283dp"
-        android:background="#5d4329">
+        android:background="#d39949">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:textSize="24dp"
-            android:textColor="#ffffff" />
+            android:textColor="#4b3621" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,8 +32,8 @@
             android:id="@+id/textViewEndereco"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#ffffff" />
+            android:textSize="18dp"
+            android:textColor="#4b3621" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:textColor="#ffffff" />
+            android:textColor="#4b3621" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:textColor="#ffffff" />
+            android:textColor="#4b3621" />
     </LinearLayout>
 
     <LinearLayout

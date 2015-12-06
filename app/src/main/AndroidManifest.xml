@@ -41,7 +41,7 @@
 
         <activity
             android:name=".MapaCafeteriaAtividade"
-            android:label="@string/title_activity_mapa_cafeteria_atividade"></activity>
+            android:label="@string/title_activity_mapa_cafeteria_atividade" />
     </application>
 
 </manifest>
